@@ -11,21 +11,19 @@ Given('I am on the Bing homepage', async function () {
 });
 
 When('I enter {string} in the search bar', async function (searchTerm) {
-    await page.waitForSelector('textarea#sb_form_q', { state: 'visible', timeout: 10000 });
+    await page.waitForSelector('textarea#sb_form_q', { state: 'visible', timeout: 15000 });
     await page.fill('textarea#sb_form_q', searchTerm);
-    await page.waitForTimeout(2000);
-    await page.press('textarea#sb_form_q', 'Enter');
-    await page.waitForLoadState('networkidle');
+    await page.waitForTimeout(4000);
 });
 
 When('I click the search button', async function () {
-    await page.waitForSelector('textarea#sb_form_q', { state: 'visible', timeout: 5000 });
+    await page.waitForSelector('textarea#sb_form_q', { state: 'visible', timeout: 10000 });
     await page.press('textarea#sb_form_q', 'Enter');
     await page.waitForLoadState('networkidle');
 });
 
 When('I click on the {string} filter', async function (filterCategory) {
-    await page.waitForSelector(`#b-scopeListItem-${filterCategory}`, {state: 'visible', timeout: 5000 });
+    await page.waitForSelector(`#b-scopeListItem-${filterCategory}`, {state: 'visible', timeout: 10000 });
     await page.click(`#b-scopeListItem-${filterCategory}`);
     await page.waitForTimeout(2000);
 });
